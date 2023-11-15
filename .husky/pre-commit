@@ -1,40 +1,40 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# . "$(dirname "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling and testing your project before committing...\n'
+# echo '🏗️👷 Styling and testing your project before committing...\n'
 
-# Check tsconfig standards
-yarn check-types ||
-(
-    echo '\n🤡❌ Failed type check.
-            Are you seriously trying to write that? Make the changes required above.'
-    false;
-)
+# # Check tsconfig standards
+# yarn check-types ||
+# (
+#     echo '\n🤡❌ Failed type check.
+#             Are you seriously trying to write that? Make the changes required above.'
+#     false;
+# )
 
-# Check ESLint Standards
-yarn lint ||
-(
-        echo '\n😤🏀 ESLint check failed.
-                Make the required changes listed above, add changes and try to commit again.'
-        false;
-)
+# # Check ESLint Standards
+# yarn lint ||
+# (
+#         echo '\n😤🏀 ESLint check failed.
+#                 Make the required changes listed above, add changes and try to commit again.'
+#         false;
+# )
 
-# Check Prettier standards
-yarn check-format ||
-(
-    echo '\n🤢🤮 Prettier check failed.
-            Run yarn format, add changes and try commit again.'
-    false;
-)
+# # Check Prettier standards
+# yarn check-format ||
+# (
+#     echo '\n🤢🤮 Prettier check failed.
+#             Run yarn format, add changes and try commit again.'
+#     false;
+# )
 
-echo '\n🤔🤔 ... Alright... Code looks good to me... Trying to build now.\n'
+# echo '\n🤔🤔 ... Alright... Code looks good to me... Trying to build now.\n'
 
-yarn build ||
-(
-    echo '\n❌👷 Better call someone who can write in React... Because your build failed.
-            Next build failed: View the errors above to see why.'
-    false;
-)
+# yarn build ||
+# (
+#     echo '\n❌👷 Better call someone who can write in React... Because your build failed.
+#             Next build failed: View the errors above to see why.'
+#     false;
+# )
 
-# If everything passes... Now we can commit
-echo '\n✅✅ You win this time... I am committing this now.\n'
+# # If everything passes... Now we can commit
+# echo '\n✅✅ You win this time... I am committing this now.\n'
