@@ -6,9 +6,9 @@ import Layout from 'components/Layout';
 import getRouteContext from 'helpers/getRouteContext';
 
 import { List } from '@wulkanowy/timetable-parser';
-import { TimeTableData, TimeTableListResponse } from 'types/TimeTable';
+import { TimeTableData } from 'types/TimeTable';
 import fetchTimetableData from 'helpers/fetchTimetable';
-import fetchTimeTableList from 'helpers/fetchTimetableList';
+import fetchTimeTableLists from 'helpers/fetchTimetableLists';
 import { Replacements } from 'types/Replacements';
 
 interface TablePageProps {
@@ -51,16 +51,14 @@ const TablePage: NextPage<TablePageProps> = (props: TablePageProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { timeTableList } = await fetchTimeTableList();
+  const parsedListInfo = await fetchTimeTableLists();
 
-  const { classes, teachers, rooms } = timeTableList;
-  const classesPaths = classes?.map((classItem) => `/class/${classItem.value}`);
-  const teachersPaths = teachers?.map(
-    (teacherItem) => `/teacher/${teacherItem.value}`
-  );
-  const roomsPaths = rooms?.map((roomItem) => `/room/${roomItem.value}`);
-  if (!classesPaths || !teachersPaths || !roomsPaths)
-    throw Error('Unable to obtain all paths');
+
+  const { classes, teachers, rooms } = parsedListInfo;
+  const classesPaths = classes?.map((classItem) => `/class/${classItem.planId}`);
+  const teachersPaths = teachers?.map((teacherItem) => `/teacher/${teacherItem.planId}`);
+  const roomsPaths = rooms?.map((roomItem) => `/room/${roomItem.planId}`);
+  
   return {
     paths: [...classesPaths, ...teachersPaths, ...roomsPaths],
     fallback: 'blocking',

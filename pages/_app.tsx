@@ -8,8 +8,7 @@ import {
   SettingsContextType,
   Themes,
 } from 'types/SettingsContext';
-import fetchTimeTableList from 'helpers/fetchTimetableList';
-import { TimeTableListResponse } from 'types/TimeTable';
+import fetchTimeTableLists from 'helpers/fetchTimetableLists';
 import fetchReplacements from 'helpers/fetchReplacements';
 import { Replacements } from 'types/Replacements';
 
@@ -198,16 +197,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
-  const { timeTableList, status: timeTableListStatus }: TimeTableListResponse =
-    await fetchTimeTableList();
+  const parsedListInfo = await fetchTimeTableLists();
 
   const appProps = await App.getInitialProps(appContext);
 
   return {
     ...appProps,
     pageProps: {
-      timeTableList,
-      timeTableListStatus,
+      parsedListInfo
     },
   };
 };

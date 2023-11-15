@@ -1,5 +1,4 @@
 import { TableHour, TableLesson } from '@wulkanowy/timetable-parser';
-import { ParsedInfo } from './parsedDataTypes';
 
 export interface TimeTableData {
   type: 'class' | 'teacher' | 'room';
@@ -13,8 +12,8 @@ export interface TimeTableData {
   days: TableLesson[][][];
   hours: Record<number, TableHour>;
 }
-
-export interface TimeTableListResponse {
-  parsedInfo?: ParsedInfo;
-  status: TimeTableData['status'];
-}
+// TODO remove TimeTableListResponse
+// export interface TimeTableListResponse {
+//   parsedInfo?: ParsedInfo;
+//   status: TimeTableData['status'];
+// }

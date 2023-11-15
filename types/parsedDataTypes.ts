@@ -126,7 +126,7 @@ export interface ParsedRoom extends Info {
     roomName: string;
 }
 
-export interface ParsedInfo {
+export interface ParsedListInfo {
     classes: ParsedClass[];
     teachers: ParsedTeacher[];
     rooms: ParsedRoom[];

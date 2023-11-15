@@ -1,5 +1,5 @@
 import { ListItem, List } from "@wulkanowy/timetable-parser"
-import { ParsedClass, ParsedInfo, ParsedRoom, ParsedTeacher, PeopleData } from "types/parsedDataTypes";
+import { ParsedClass, ParsedListInfo, ParsedRoom, ParsedTeacher, PeopleData } from "types/parsedDataTypes";
 import { load } from "cheerio";
 import { ElementType } from "domelementtype";
 
@@ -109,7 +109,7 @@ function parseRooms(teachers: ListItem[]): ParsedRoom[] { // { name: '4a Pracown
     })
 }
 
-export function parseList({ classes, teachers, rooms }: List): ParsedInfo {
+export function parseList({ classes, teachers, rooms }: List): ParsedListInfo {
     if (!teachers || !rooms) throw new Error("There is no teachers or rooms list");
 
     return {
