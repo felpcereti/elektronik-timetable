@@ -3,7 +3,7 @@ import { TableHour, TableLesson } from '@wulkanowy/timetable-parser';
 export interface TimeTableData {
   type: 'class' | 'teacher' | 'room';
   id: number;
-  status: 'ok' | 'empty' | 'error';
+  // status: 'ok' | 'empty' | 'error';
 
   title: string;
   generatedDate?: string;

@@ -1,5 +1,5 @@
 import {  TimetableList } from '@wulkanowy/timetable-parser';
-import { ParsedListInfo } from 'types/parsedDataTypes';
+import { ParsedListsInfo } from 'types/parsedDataTypes';
 import { parseList } from './dataParsers';
 
 export const URL = `${
@@ -10,7 +10,7 @@ export const URL = `${
 
 
 
-async function fetchTimeTableLists(): Promise<ParsedListInfo> {
+async function fetchTimeTableLists(): Promise<ParsedListsInfo> {
   const response = await fetch(URL);
   if (!response.ok) {
     throw new Error("Network error while parsing response")

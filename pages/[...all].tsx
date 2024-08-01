@@ -72,6 +72,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (tab === 'class' || tab === 'teacher' || tab === 'room')
     timeTableData = await fetchTimetableData(tab, Number(value));
+  else {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {

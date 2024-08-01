@@ -1,6 +1,5 @@
 import { List, Table } from '@wulkanowy/timetable-parser';
 import { TimeTableData } from 'types/TimeTable';
-import completeTimeTableData from 'helpers/completeTimeTableData';
 
 function constructURL(dataType: TimeTableData['type'], id: number) {
   const prefix = process.env.NEXT_PUBLIC_PROXY_URL

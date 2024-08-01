@@ -1,5 +1,5 @@
 import { ListItem, List } from "@wulkanowy/timetable-parser"
-import { ParsedClass, ParsedListInfo, ParsedRoom, ParsedTeacher, PeopleData } from "types/parsedDataTypes";
+import { ParsedClass, ParsedListsInfo, ParsedRoom, ParsedTeacher, PeopleData } from "types/parsedDataTypes";
 import { load } from "cheerio";
 import { ElementType } from "domelementtype";
 
@@ -89,7 +89,7 @@ export function completeTeachersData(teachers: ParsedTeacher[], peopleData: Peop
             teacher.firstName = personData.firstName;
             teacher.fullName = `${teacher.firstName} ${teacher.lastName}`;
         } else {
-            console.log(`couldn't find ${teacher.shortName}`);
+            console.log(`couldn't find ${teacher.shortName}, while completing missing teacher data (it's propably not in the school officials list)`);
         }
     })
 }
@@ -109,7 +109,7 @@ function parseRooms(teachers: ListItem[]): ParsedRoom[] { // { name: '4a Pracown
     })
 }
 
-export function parseList({ classes, teachers, rooms }: List): ParsedListInfo {
+export function parseList({ classes, teachers, rooms }: List): ParsedListsInfo {
     if (!teachers || !rooms) throw new Error("There is no teachers or rooms list");
 
     return {

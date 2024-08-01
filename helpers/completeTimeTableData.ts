@@ -1,7 +1,9 @@
 import { List } from '@wulkanowy/timetable-parser';
 import { TimeTableData } from 'types/TimeTable';
 
-export default function completeTimeTableData(
+
+// TODO remove completeTimeTableData.ts
+ function completeTimeTableData(
   { days, type: dataType, id }: TimeTableData,
   timeTableList: List
 ) {
